@@ -1,0 +1,91 @@
+/* Header.css */
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #FFF; /* Domyślny biały kolor tła */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lekki cień dla wyróżnienia */
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+  
+  .header-logo img {
+    height: 50px; /* Dostosuj do rzeczywistej wysokości twojego logo */
+  }
+  
+  .header-user-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-button, .add-business-button {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .language-selector {
+    margin: 0 1rem;
+    cursor: pointer;
+  }
+  
+  .add-business-button {
+    background-color: #000; /* Czarny kolor tła */
+    color: #fff; /* Biały kolor tekstu */
+  }
+  
+  .header-search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .header-search {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header-search input[type="text"] {
+    margin-right: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
+  .search-button {
+    background-color: red; /* Czerwony kolor tła przycisku */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .header-categories {
+    display: flex;
+  }
+  
+  .category-button {
+    background: none;
+    border: none;
+    color: #333; /* Ciemny kolor tekstu */
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .header.scrolled {
+    background-color: #333; /* Ciemniejsze tło po przewinięciu */
+    /* Możesz ukryć inne elementy lub zmienić ich styl po przewinięciu */
+  }
+  
+  /* Dodaj media queries dla responsywności */
+  
