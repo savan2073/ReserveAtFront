@@ -25,6 +25,7 @@ function Header() {
           <img src="/path-to-your-logo.png" alt="Logo" />
         </div>
         <div className="header-user-actions">
+              
           <button className="login-button">Zaloguj się / Załóż konto</button>
           <button className="add-business-button">DODAJ SWÓJ BIZNES</button>
         </div>
