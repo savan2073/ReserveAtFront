@@ -1,42 +1,27 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import axios from "axios";
+import React, {useState} from "react";
 
-function Register() {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+function BizRegister() {
+    const [companyName, setCompanyName] = useState("");
+    const [city, setCity] = useState();
+    const [address, setAddress] = useState("");
+    const [description, setDescription] = useState("");
+    const [businessType, setBusinessType] = useState();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [] = useState();
 
-    async function save(event) {
-        event.preventDefault();
-        try {
-            await axios.post("http://localhost:8080/api/users/register", {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password,
-                phoneNumber: phoneNumber
-            });
-            alert("User registered successfully");
-        } catch (err) {
-            alert(err);
-        }
-    }
 
-    return (
-    <div>
+    return(
         <div className="container mt-4">
             <div className="card">
                 <h1>User Registration</h1>
                 <form>
                     <div className="form-group">
                         <label>First Name</label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             className="form-control"
-                            id="firstName" 
+                            id="firstName"
                             placeholder="Enter First Name"
                             value={firstName}
                             onChange={(event) => {
@@ -46,10 +31,10 @@ function Register() {
                     </div>
                     <div className="form-group">
                         <label>Last Name</label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             className="form-control"
-                            id="lastName" 
+                            id="lastName"
                             placeholder="Enter Last Name"
                             value={lastName}
                             onChange={(event) => {
@@ -59,10 +44,10 @@ function Register() {
                     </div>
                     <div className="form-group">
                         <label>Email</label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             className="form-control"
-                            id="email" 
+                            id="email"
                             placeholder="Enter Email"
                             value={email}
                             onChange={(event) => {
@@ -72,10 +57,10 @@ function Register() {
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             className="form-control"
-                            id="password" 
+                            id="password"
                             placeholder="Enter Password"
                             value={password}
                             onChange={(event) => {
@@ -85,10 +70,10 @@ function Register() {
                     </div>
                     <div className="form-group">
                         <label>Phone Number</label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             className="form-control"
-                            id="phoneNumber" 
+                            id="phoneNumber"
                             placeholder="Enter Phone Number"
                             value={phoneNumber}
                             onChange={(event) => {
@@ -100,10 +85,9 @@ function Register() {
                 </form>
             </div>
         </div>
-    </div>
-);
+</div>
+    );
 
-  
 }
 
-export default Register;
+export default BizRegister;

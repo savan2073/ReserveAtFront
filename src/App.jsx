@@ -1,10 +1,10 @@
 import './App.css'
-import Header from './components/Header'
-import SearchBar from './components/SearchBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
+import Biz from './components/Business';
+import BizRegister from './components/BizRegister';
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +13,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/biz" element={<Biz />}/>
+          <Route path="/biz/register" element={<BizRegister/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -28,6 +28,9 @@ function Header() {
   const handleLoginClick = () => {
     navigate('/login');
   }
+  const handleBizClick = () => {
+    navigate('/biz');
+  }
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -38,7 +41,7 @@ function Header() {
         <div className="header-user-actions">
               
           <button className="login-button" onClick={handleLoginClick}>Zaloguj się / Załóż konto</button>
-          <button className="add-business-button">DODAJ SWÓJ BIZNES</button>
+          <button className="add-business-button" onClick={handleBizClick}>DODAJ SWÓJ BIZNES</button>
         </div>
       </div>
       {!isScrolled && (
