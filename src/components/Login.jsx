@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
 
 function Login() {
 
@@ -44,6 +45,7 @@ function Login() {
 
     return (
         <div>
+          <Header></Header>
              <div class="container">
              <div class="row">
                  <h2>Login</h2>

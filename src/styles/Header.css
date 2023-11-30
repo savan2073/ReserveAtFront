@@ -1,4 +1,9 @@
 /* Header.css */
+.logo{
+  width: auto;
+  height: auto;
+}
+
 
 .header {
     width: 100%;
@@ -18,7 +23,8 @@
   }
   
   .header-logo img {
-    height: 50px; /* Dostosuj do rzeczywistej wysokości twojego logo */
+    height: auto; /* Dostosuj do rzeczywistej wysokości twojego logo */
+    width: auto;
   }
   
   .header-user-actions {

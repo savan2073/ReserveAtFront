@@ -1,11 +1,15 @@
 // Header.js
 
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import '../styles/Header.css'; // Upewnij się, że ścieżka do pliku CSS jest prawidłowa
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/images/ReserveAtLogoText.png';
 
 function Header() {
   // Logika dla zmiany stylów po przewinięciu
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +22,22 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLogoClick = () => {
+    navigate('/');
+  }
+  const handleLoginClick = () => {
+    navigate('/login');
+  }
+
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-top">
         <div className="header-logo">
-          <img src="/path-to-your-logo.png" alt="Logo" />
+          <img src={logo} alt="ReserveAt Logo" className='logo' onClick={handleLogoClick}/>
         </div>
         <div className="header-user-actions">
               
-          <button className="login-button">Zaloguj się / Załóż konto</button>
+          <button className="login-button" onClick={handleLoginClick}>Zaloguj się / Załóż konto</button>
           <button className="add-business-button">DODAJ SWÓJ BIZNES</button>
         </div>
       </div>
