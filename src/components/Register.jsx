@@ -86,7 +86,7 @@ function Register() {
                 <input type="checkbox" id="termsOfService" />
                 <label htmlFor="termsOfService">I agree all statements in Terms of service</label>
             </div>
-            <button type="submit" onClick={save}>Register</button>
+            <button type="submit" className="RegisterButton" onClick={save}>Register</button>
             <p className="member" onClick={handleLoginClick}>I am already member</p>
         </form>
         <div className="signup-image">
