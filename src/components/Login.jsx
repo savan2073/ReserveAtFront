@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Header from "./Header";
+import '../styles/Login.css';
+import guywithlaptop from '../assets/images/guywithlaptop.jpg';
 
 function Login() {
 
@@ -34,7 +35,7 @@ function Login() {
              }
           }, fail => {
            console.error(fail); // Error!
-  });
+            });
         }
  
          catch (err) {
@@ -42,48 +43,73 @@ function Login() {
         }
       
       }
+    const handleRegisterClick = () => {
+        navigate('/register');
+    }
 
     return (
-        <div>
-          <Header></Header>
-             <div class="container">
-             <div class="row">
-                 <h2>Login</h2>
-              <hr/>
-              </div>
-              <div class="row">
-              <div class="col-sm-6">
-  
-             <form>
-         <div class="form-group">
-           <label>Email</label>
-           <input type="email"  class="form-control" id="email" placeholder="Enter Name"
-           
-           value={email}
-           onChange={(event) => {
-             setEmail(event.target.value);
-           }}
-           
-           />
-         </div>
-         <div class="form-group">
-             <label>password</label>
-             <input type="password"  class="form-control" id="password" placeholder="Enter Fee"
-             
-             value={password}
-             onChange={(event) => {
-               setPassword(event.target.value);
-             }}
-             
-             />
-           </div>
-                   <button type="submit" class="btn btn-primary" onClick={login} >Login</button>
-               </form>
-             </div>
-             </div>
-             </div>
-      </div>
-     );
+        <div className="main-container">
+            <div className="grouped-container">
+                {/* Ilustracja użytkownika z laptopem */}
+                <div className="illustration">
+                    <img src={guywithlaptop} alt="guy with laptop" />
+                </div>
+
+                {/* Formularz rejestracji */}
+                <div className="signup-form">
+                    <h2>Sign in</h2>
+                    <form>
+                        {/* Pole wejściowe dla nazwy użytkownika/emaila */}
+                        <div className="input-field">
+                            <label htmlFor="email">Your Name</label>
+                            <input
+                                type="email"
+                                id="email"
+                                required
+                                placeholder="Enter Email"
+                                value={email}
+                                onChange={(event) => {
+                                    setEmail(event.target.value);
+                                }}
+                            />
+                        </div>
+
+                        {/* Pole wejściowe dla hasła */}
+                        <div className="input-field">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                required
+                                placeholder="Enter Password"
+                                value={password}
+                                onChange={(event) => {
+                                    setPassword(event.target.value);
+                                }}
+                            />
+                        </div>
+
+                        {/* Przycisk logowania */}
+                        <button type="submit" onClick={login}>Log in</button>
+                    </form>
+
+                    {/* Przyciski logowania społecznościowego */}
+                    <div className="social-login">
+                        <p>Or login with</p>
+                        <button className="facebook">Facebook</button>
+                        <button className="twitter">Twitter</button>
+                        <button className="google">Google</button>
+                    </div>
+
+                    {/* Link do tworzenia konta */}
+                    <div className="create-account">
+                        <a onClick={handleRegisterClick}>Create an account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
 }
 
 export default Login;

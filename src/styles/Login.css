@@ -1,0 +1,136 @@
+
+/* Styl głównego kontenera, który zawiera ilustrację i formularz */
+.main-container {
+    display: flex;
+    align-items: center; /* Wycentrowanie elementów pionowo */
+    justify-content: center; /* Wycentrowanie kontenera poziomo */
+    height: 100vh; /* Cała wysokość widoku */
+    padding: 20px;
+    background-color: #f4f7f6; /* Dostosuj kolor do projektu */
+}
+
+/* Styl obramowania i tła dla grupy ilustracji i formularza */
+.grouped-container {
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden; /* Zapobiega wychodzeniu dzieci poza zaokrąglone rogi */
+}
+
+/* Styl dla ilustracji */
+.illustration {
+    /* Stylizacja dla obrazka, bez obramowania */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Dostosuj szerokość do wymagań projektu */
+    max-width: 50%;
+}
+
+/* Styl dla formularza */
+.signup-form {
+    /* Stylizacja dla formularza, bez własnego obramowania */
+    padding: 50px;
+    flex-grow: 1; /* Pozwala formularzowi zająć pozostałą przestrzeń */
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-field {
+    margin-bottom: 20px;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* makes sure padding doesn't affect width */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.social-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-login p {
+    color: #333;
+}
+
+.social-login button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.facebook {
+    background-color: #3b5998;
+    color: white;
+}
+
+.twitter {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.google {
+    background-color: #db4437;
+    color: white;
+}
+
+.create-account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.create-account a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}
+
+/* Media query dla responsywności na mniejszych ekranach */
+@media (max-width: 768px) {
+    .grouped-container {
+        flex-direction: column;
+    }
+
+    .illustration, .signup-form {
+        width: 100%; /* Obie sekcje zajmują pełną szerokość kontenera na małych ekranach */
+        max-width: 100%; /* Resetowanie maksymalnej szerokości dla responsywności */
+        padding: 20px; /* Lekka modyfikacja paddingu dla mniejszych ekranów */
+    }
+
+    .illustration img {
+        max-height: 300px; /* Opcjonalnie, możesz ograniczyć wysokość obrazu na mniejszych ekranach */
+    }
+}

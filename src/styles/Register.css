@@ -1,0 +1,75 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the container take up the full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.signup-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #ffffff; /* Assuming you want a white background like the image */
+    padding: 40px; /* This adds some spacing inside the wrapper */
+    border-radius: 8px; /* This gives the wrapper rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* This adds a subtle shadow around the wrapper */
+    max-width: 900px; /* Adjust the max-width as necessary */
+    width: 100%;
+}
+
+.signup-form {
+    flex: 1;
+    max-width: 300px;
+    margin-right: 50px;
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup-form .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.signup-form .terms input {
+    margin-right: 10px;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signup-form .member {
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.signup-image {
+    /* Adjust width as necessary */
+    flex: 1;
+}
+
+.signup-image img {
+    max-width: 100%;
+    height: auto;
+    /* Adjust as necessary to match the provided image's aspect ratio */
+}
