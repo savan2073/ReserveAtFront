@@ -4,10 +4,10 @@ import axios from "axios";
 
 function BizRegister() {
     const [companyName, setCompanyName] = useState("");
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState("BIAŁYSTOK");
     const [address, setAddress] = useState("");
     const [description, setDescription] = useState("");
-    const [businessType, setBusinessType] = useState("");
+    const [businessType, setBusinessType] = useState("FRYZJER");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [photo, setPhoto] = useState(null);
