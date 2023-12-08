@@ -1,0 +1,6 @@
+.Home {
+    display: flex;
+    justify-content: center; /* Centruje zawartość poziomo */
+    align-items: center; /* Centruje zawartość pionowo */
+    height: 100vh; /* Pełna wysokość widocznej części okna przeglądarki */
+}

@@ -1,0 +1,36 @@
+.business-card {
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    margin: 0.5rem;
+    background: #fff;
+}
+
+.business-card img {
+    width: 100%;
+    object-fit: cover;
+    height: 240px; /* Ajust the height as needed */
+}
+
+.rating-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent */
+    padding: 0.5rem;
+    border-bottom-left-radius: 0.5rem; /* Rounded corner on the bottom-left */
+    text-align: center; /* Center text for rating and review count */
+}
+
+.rating-box .rating,
+.rating-box .review-count {
+    display: block; /* Stack them on top of each other */
+}
+
+.city {
+    display: block; /* Ensure it's on a new line */
+    text-align: center; /* Center city name below the image */
+    padding: 0.5rem 0; /* Space above and below the city name */
+}

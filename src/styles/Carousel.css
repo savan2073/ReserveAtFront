@@ -1,20 +1,58 @@
 .carousel-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
+    max-width: 1400px; /* ogranicza szerokość kontenera, jeśli jest taka potrzeba */
+    margin: auto; /* centruje karuzelę */
+    overflow: hidden;
+    position: relative;
+    padding: 20px 40px; /* dodaje miejsce na przyciski po obu stronach */
+    box-sizing: border-box; /* upewnia się, że padding nie wpływa na szerokość */
 }
 
 .carousel-items {
     display: flex;
-    overflow: hidden;
-    width: calc(100% - 100px); /* Zostaw miejsce na przyciski */
+    flex-wrap: nowrap;
+    transition: transform 0.3s ease-in-out;
+    gap: 20px; /* dodaje przerwy między elementami */
 }
 
 .carousel-item {
-    flex: 0 0 25%; /* Każdy item ma 25% szerokości kontenera */
+    flex: 0 0 calc(25% - 10px); /* Zmniejsz odstępy, dostosuj wartość 10px według potrzeb */
+    margin: 0 5px; /* Zmniejsz marginesy, 5px z każdej strony daje 10px łącznego odstępu */
 }
 
+
 .carousel-button {
-    width: 50px;
-    /* Dalsze style dla przycisków */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* zmniejsza szerokość przycisków */
+    height: 30px; /* zmniejsza wysokość przycisków */
+    background-color: rgba(0, 0, 0, 0.5); /* półprzezroczysty czarny */
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-button.left {
+    left: 0;
+}
+
+.carousel-button.right {
+    right: 0;
+}
+
+
+/* Style dla mniejszych ekranów */
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 calc(50% - 10px); /* Na mniejszych ekranach pokaż tylko 2 elementy */
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        flex: 0 0 calc(100% - 10px); /* Na bardzo małych ekranach pokaż tylko 1 element */
+        margin: 0 5px;
+    }
 }

@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/images/ReserveAtLogoText.png';
 
 function Biz() {
 
@@ -12,7 +13,7 @@ function Biz() {
 
     return(
         <header>
-            <img src="logo" alt="RAtLogo" />
+            <img src={logo} alt="RAtLogo" />
             <br/>
             <button onClick={handleCreateBizClick}>ZAREJESTRUJ SWÓJ BIZNES</button>
         </header>
