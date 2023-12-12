@@ -20,14 +20,15 @@ function Login() {
             {
              console.log(res.data);
              
-             if (res.data.message == "Email does not exit") 
+             if (res.data.message == "Email does not exist")
              {
-               alert("Email not exits");
+               alert("Email does not exist");
              } 
-             else if(res.data.message == "Login success")
+             else if(res.data.message == "Login success" && res.data.token)
              { 
-                
-                navigate('/home');
+                localStorage.setItem("jwtToken", res.data.token);
+                localStorage.setItem("userId", res.data.userId);
+                navigate('/');
              } 
               else 
              { 

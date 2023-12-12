@@ -8,6 +8,7 @@ import "../styles/Home.css";
 function Home() {
     return(
         <div className="Home">
+            <Header/>
             <Carousel>
                 <BusinessCard businessId={1} />
                 <BusinessCard businessId={2} />
