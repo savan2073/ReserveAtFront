@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import bizregillu from "../assets/images/bizregillu.jpg"
+import {useNavigate} from "react-router-dom";
+
 
 function BizRegister() {
     const [companyName, setCompanyName] = useState("");
@@ -15,6 +18,7 @@ function BizRegister() {
     const [citiesOptions, setCitiesOptions] = useState([]);
     const [businessTypesOptions, setBusinessTypesOptions] = useState([]);
 
+    const navigate = useNavigate();
 
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
@@ -57,117 +61,93 @@ function BizRegister() {
         }
     }
 
+    const handleBizLoginClick = () => {
+        navigate('/biz/login');
+    }
+
 
     return(
-        <div className="container mt-4">
-            <div className="card">
-                <h1>Rejestracja Firmy</h1>
-                <form>
-                    {/*company name*/}
-                    <div className="form-group">
-                        <label>Nazwa Firmy</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="companyName"
-                            placeholder="Wpisz nazwę firmy"
-                            value={companyName}
-                            onChange={(event) => setCompanyName(event.target.value)}
-                        />
-                    </div>
-                    {/*business type*/}
-                    <div className="form-group">
-                        <label>Typ Działalności</label>
-                        <select
-                            className="form-control"
-                            value={businessType}
-                            onChange={(e) => setBusinessType(e.target.value)}
-                        >
-                            {businessTypesOptions.map((type, index) => (
-                                <option key={index} value={type}>
-                                    {type}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    {/*city*/}
-                    <div className="form-group">
-                        <label>Miasto</label>
-                        <select
-                            className="form-control"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        >
-                            {citiesOptions.map((cityOption, index) => (
-                                <option key={index} value={cityOption}>
-                                    {cityOption}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    {/*Address*/}
-                    <div className="form-group">
-                        <label>Adres</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="address"
-                            placeholder="Wpisz adres"
-                            value={address}
-                            onChange={(event) => setAddress(event.target.value)}
-                        />
-                    </div>
-                    {/*Email*/}
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            id="email"
-                            placeholder="Wpisz email"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                        />
-                    </div>
-                    {/*password*/}
-                    <div className="form-group">
-                        <label>Hasło</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            placeholder="Wpisz hasło"
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                        />
-                        {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-                    </div>
+        <div className="signup-container">
+            <div className="signup-wrapper">
+                <form className="signup-form">
+                    <h2>Rejestracja Firmy</h2>
 
-                    {/*Description*/}
-                    <div className="form-group">
-                        <label>Opis</label>
-                        <textarea
-                            className="form-control"
-                            id="description"
-                            placeholder="Wpisz opis"
-                            value={description}
-                            onChange={(event) => setDescription(event.target.value)}
-                        ></textarea>
-                    </div>
-                    {/*File Upload for PhotoPath*/}
-                    <div className="form-group">
-                        <label>Zdjęcie</label>
-                        <input
-                            type="file"
-                            className="form-control"
-                            id="photoPath"
-                            accept=".jpg, .jpeg"
-                            onChange={handleFileChange}
-                        />
-                    </div>
-                    {/*Save Button*/}
-                    <button type="submit" className="btn btn-primary mt-4" onClick={save}>Zapisz</button>
+                    {/* Company Name */}
+                    <input type="text"
+                           className="form-control"
+                           id="companyName"
+                           placeholder="Wpisz nazwę firmy"
+                           value={companyName}
+                           onChange={(event) => setCompanyName(event.target.value)} />
+
+                    {/* Business Type */}
+                    <select className="form-control"
+                            value={businessType}
+                            onChange={(e) => setBusinessType(e.target.value)}>
+                        {businessTypesOptions.map((type, index) => (
+                            <option key={index} value={type}>
+                                {type}
+                            </option>
+                        ))}
+                    </select>
+
+                    {/* City */}
+                    <select className="form-control"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}>
+                        {citiesOptions.map((cityOption, index) => (
+                            <option key={index} value={cityOption}>
+                                {cityOption}
+                            </option>
+                        ))}
+                    </select>
+
+                    {/* Address */}
+                    <input type="text"
+                           className="form-control"
+                           id="address"
+                           placeholder="Wpisz adres"
+                           value={address}
+                           onChange={(event) => setAddress(event.target.value)} />
+
+                    {/* Email */}
+                    <input type="email"
+                           className="form-control"
+                           id="email"
+                           placeholder="Wpisz email"
+                           value={email}
+                           onChange={(event) => setEmail(event.target.value)} />
+
+                    {/* Password */}
+                    <input type="password"
+                           className="form-control"
+                           id="password"
+                           placeholder="Wpisz hasło"
+                           value={password}
+                           onChange={(event) => setPassword(event.target.value)} />
+
+                    {/* Description */}
+                    <textarea className="form-control"
+                              id="description"
+                              placeholder="Wpisz opis"
+                              value={description}
+                              onChange={(event) => setDescription(event.target.value)}>
+            </textarea>
+
+                    {/* File Upload for PhotoPath */}
+                    <input type="file"
+                           className="form-control"
+                           id="photoPath"
+                           accept=".jpg, .jpeg"
+                           onChange={handleFileChange} />
+
+                    {/* Save Button */}
+                    <button type="submit" className="RegisterButton" onClick={save}>Zapisz</button>
+                    <p className="member" onClick={handleBizLoginClick}>I am already member</p>
                 </form>
+                <div className="signup-image">
+                    <img src={bizregillu} alt="business register illustration" />
+                </div>
             </div>
         </div>
 

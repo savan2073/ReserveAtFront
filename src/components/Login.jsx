@@ -28,6 +28,7 @@ function Login() {
              { 
                 localStorage.setItem("jwtToken", res.data.token);
                 localStorage.setItem("userId", res.data.userId);
+                localStorage.setItem("role", res.data.role);
                 navigate('/');
              } 
               else 
