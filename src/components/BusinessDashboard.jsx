@@ -5,17 +5,23 @@ import axiosInstance from "../../axiosConfig.js";
 
 function BusinessDashboard() {
     const [businessDetails, setBusinessDetails] = useState(null);
+    const [employees, setEmployees] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         axiosInstance.get('/api/business/details')
             .then(res => {
                 setBusinessDetails(res.data);
+                const businessId = res.data.businessId;
+                axiosInstance.get(`/api/business/${businessId}/employees`)
+                    .then(res => setEmployees(res.data))
+                    .catch(error => console.error('Error fetching employees', error));
             })
             .catch(error => {
                 console.error('Error fetching business data', error);
             });
     }, []);
+
 
 
     const handleAddEmployeeClick = () => {
@@ -38,6 +44,18 @@ function BusinessDashboard() {
                 {/* inny szczegóły biznesu */}
             </div>
             <button onClick={handleAddEmployeeClick}>Dodaj pracownika</button>
+
+            <h2>Pracownicy</h2>
+            <ul>
+                {employees.map(employee => (
+                    <li key={employee.employeeId}>
+                        {employee.employeeName} {employee.employeeSurname}
+                        <button onClick={() => navigate(`/add-activity/${employee.employeeId}`)}>
+                            Dodaj Activity
+                        </button>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

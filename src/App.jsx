@@ -9,6 +9,7 @@ import UserProfile from "./components/UserProfile.jsx";
 import BizLogin from "./components/BizLogin.jsx";
 import BusinessDashboard from "./components/BusinessDashboard.jsx";
 import AddEmployeeForm from "./components/AddEmployeeForm.jsx";
+import AddActivity from "./components/AddActivity.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/biz/login" element={<BizLogin/>}/>
           <Route path="/business-dashboard" element={<BusinessDashboard/>}/>
           <Route path="/add-employee" element={<AddEmployeeForm/>}/>
+          <Route path="/add-activity/:employeeId" element={<AddActivity/>} />
         </Routes>
       </div>
     </BrowserRouter>

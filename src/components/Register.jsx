@@ -29,6 +29,7 @@ function Register() {
                 phoneNumber: phoneNumber
             });
             alert("User registered successfully");
+            navigate("/login")
         } catch (err) {
             alert(err);
         }

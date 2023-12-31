@@ -32,7 +32,7 @@ function Header() {
             <img src={logo} alt="ReserveAt Logo" className='logo' onClick={handleLogoClick}/>
           </div>
           <div className="header-user-actions">
-            {userLoggedIn ? (
+            {userLoggedIn && userId ? (
                 <button className="profile-button" onClick={handleUserProfileClick}>
                   Profil
                 </button>
