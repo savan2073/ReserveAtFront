@@ -1,0 +1,46 @@
+.business-card-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.business-card-result {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+}
+
+.business-card-header {
+    display: flex;
+    align-items: center;
+}
+
+.business-logo {
+    width: 100px; /* Dostosuj do wymiarów logo */
+    height: auto;
+    margin-right: 16px;
+}
+
+.business-info {
+    flex-grow: 1;
+}
+
+.business-name {
+    font-size: 24px; /* Dostosuj rozmiar czcionki */
+    color: #333; /* Dostosuj kolor czcionki */
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.business-rating {
+    font-size: 18px; /* Dostosuj rozmiar czcionki */
+    color: #555; /* Dostosuj kolor czcionki */
+    margin-bottom: 8px;
+}
+
+.business-description {
+    font-size: 16px; /* Dostosuj rozmiar czcionki */
+    color: #666; /* Dostosuj kolor czcionki */
+}

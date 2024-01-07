@@ -10,6 +10,8 @@ import BizLogin from "./components/BizLogin.jsx";
 import BusinessDashboard from "./components/BusinessDashboard.jsx";
 import AddEmployeeForm from "./components/AddEmployeeForm.jsx";
 import AddActivity from "./components/AddActivity.jsx";
+import SearchPage from "./components/SearchPage.jsx";
+import BusinessPage from "./components/BusinessPage.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +27,8 @@ function App() {
           <Route path="/business-dashboard" element={<BusinessDashboard/>}/>
           <Route path="/add-employee" element={<AddEmployeeForm/>}/>
           <Route path="/add-activity/:employeeId" element={<AddActivity/>} />
+          <Route path="/search" element={<SearchPage/>}/>
+          <Route path="/business/:city/:businessName" element={<BusinessPage/>}/>
         </Routes>
       </div>
     </BrowserRouter>

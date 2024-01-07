@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Header.css'; // Upewnij się, że ścieżka do pliku CSS jest prawidłowa
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/images/ReserveAtLogoText.png';
+import SearchBar from "./SearchBar.jsx";
 
 function Header() {
   const userLoggedIn = localStorage.getItem("jwtToken");
@@ -45,11 +46,7 @@ function Header() {
           </div>
         </div>
         <div className="header-search-container">
-          <div className="header-search">
-            <input type="text" placeholder="Znajdź usługę" />
-            <input type="text" placeholder="Gdzie?" />
-            <button type="submit" className="search-button">Szukaj</button>
-          </div>
+          <SearchBar/>
           <div className="header-categories">
             <button className="category-button">Fryzjer</button>
             <button className="category-button">Barber shop</button>
