@@ -28,6 +28,12 @@ function BusinessDashboard() {
         navigate('/add-employee');
     }
 
+    const handleManageWorkingHoursClick = () => {
+        // Przekierowanie do strony zarządzania godzinami pracy
+        navigate('/manage-working-hours');
+    }
+
+
     if (!businessDetails) {
         return <div>Loading...</div>;
     }
@@ -43,6 +49,7 @@ function BusinessDashboard() {
                 <p>Email: {businessDetails.email}</p>
                 {/* inny szczegóły biznesu */}
             </div>
+            <button onClick={handleManageWorkingHoursClick}>Zarządzaj godzinami pracy</button>
             <button onClick={handleAddEmployeeClick}>Dodaj pracownika</button>
 
             <h2>Pracownicy</h2>

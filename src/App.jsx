@@ -12,6 +12,7 @@ import AddEmployeeForm from "./components/AddEmployeeForm.jsx";
 import AddActivity from "./components/AddActivity.jsx";
 import SearchPage from "./components/SearchPage.jsx";
 import BusinessPage from "./components/BusinessPage.jsx";
+import ManageWorkingHours from "./components/ManageWorkingHours.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ function App() {
           <Route path="/add-activity/:employeeId" element={<AddActivity/>} />
           <Route path="/search" element={<SearchPage/>}/>
           <Route path="/business/:city/:businessName" element={<BusinessPage/>}/>
+          <Route path="/manage-working-hours" element={<ManageWorkingHours />} />
         </Routes>
       </div>
     </BrowserRouter>

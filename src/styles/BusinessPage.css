@@ -1,0 +1,59 @@
+
+
+.business-page-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.main-column {
+    flex-grow: 2;
+}
+
+.side-column {
+    flex-grow: 1;
+}
+
+.employee-services {
+    margin-bottom: 20px;
+}
+
+.service-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.service-info {
+    flex-grow: 1;
+}
+
+.service-title {
+    font-weight: bold;
+}
+
+.service-time {
+    font-size: 0.9em;
+}
+
+.service-booking {
+    text-align: right;
+}
+
+.service-price {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.service-button {
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.service-button:hover {
+    background-color: #0056b3;
+}
