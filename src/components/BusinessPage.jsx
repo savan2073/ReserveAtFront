@@ -22,7 +22,16 @@ const BusinessPage = () => {
                 }
                 const data = await response.json();
                 console.log(data);
-                setBusinessDetails(data);
+                // Dodanie employeeId do każdej aktywności
+                const employeesWithActivityIds = data.employees.map(employee => ({
+                    ...employee,
+                    activities: employee.activities.map(activity => ({
+                        ...activity,
+                        employeeId: employee.employeeId
+                    }))
+                }));
+
+                setBusinessDetails({ ...data, employees: employeesWithActivityIds });
 
 
 
@@ -61,6 +70,7 @@ const BusinessPage = () => {
     }
 
     const handleBookingSubmit = async (bookingData, activity) => {
+        console.log("Selected activity: ", activity);
         try {
             const userId = localStorage.getItem('userId'); // Pobierz userId z localStorage
             const response = await axiosInstance.post('/api/bookings/create', {
@@ -72,6 +82,7 @@ const BusinessPage = () => {
                 duration: activity.durationOfTreatment // Załóżmy, że masz duration w danych aktywności
             });
             console.log("Booking data: ", bookingData);
+
 
             if (response.status === 201) {
                 // Obsługa sukcesu
