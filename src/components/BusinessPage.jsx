@@ -1,6 +1,8 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import "../styles/BusinessPage.css"
+import BookingDialog from "./BookingDialog.jsx";
+import axiosInstance from "../../axiosConfig.js";
 
 
 const BusinessPage = () => {
@@ -8,6 +10,8 @@ const BusinessPage = () => {
     const [businessDetails, setBusinessDetails] = useState(null);
     const [workingHours, setWorkingHours] = useState([]);
 
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [selectedActivity, setSelectedActivity] = useState(null);
 
     useEffect(() => {
         const fetchBusinessDetails = async () => {
@@ -20,6 +24,8 @@ const BusinessPage = () => {
                 console.log(data);
                 setBusinessDetails(data);
 
+
+
                 //dodatkowe żądanie dla godzin pracy
                 const hoursResponse = await fetch(`/api/business/${data.businessId}/working-hours`);
                 if (!hoursResponse.ok) {
@@ -27,6 +33,7 @@ const BusinessPage = () => {
                 }
                 const hoursData = await hoursResponse.json();
                 setWorkingHours(hoursData);
+
             } catch (error) {
                 console.error('Wystąpił błąd:', error);
                 // Tutaj możesz ustawić stan dla błędu, aby wyświetlić informację użytkownikowi
@@ -41,6 +48,39 @@ const BusinessPage = () => {
 
     if (!businessDetails) {
         return <div>Ładowanie danych biznesu...</div>
+    }
+
+    const openDialog = (activity) => {
+        setSelectedActivity(activity);
+        setDialogOpen(true);
+    }
+
+    const closeDialog = () => {
+        setDialogOpen(false);
+        setSelectedActivity(null);
+    }
+
+    const handleBookingSubmit = async (bookingData, activity) => {
+        try {
+            const userId = localStorage.getItem('userId'); // Pobierz userId z localStorage
+            const response = await axiosInstance.post('/api/bookings/create', {
+                userId: userId,
+                employeeId: activity.employeeId, // Załóżmy, że masz employeeId w danych aktywności
+                activityId: bookingData.activityId,
+                bookingDate: bookingData.bookingDate,
+                startTime: bookingData.bookingTime,
+                duration: activity.durationOfTreatment // Załóżmy, że masz duration w danych aktywności
+            });
+            console.log("Booking data: ", bookingData);
+
+            if (response.status === 201) {
+                // Obsługa sukcesu
+                console.log('Rezerwacja utworzona pomyślnie', response.data);
+            }
+        } catch (error) {
+            // Obsługa błędów
+            console.error('Błąd podczas tworzenia rezerwacji', error);
+        }
     }
 
     return (
@@ -62,7 +102,7 @@ const BusinessPage = () => {
                                 </div>
                                 <div className="service-booking">
                                     <div className="service-price">{activity.price} zł</div>
-                                    <button className="service-button">Umów</button>
+                                    <button className="service-button" onClick={() => openDialog(activity)}>Umów</button>
                                 </div>
                             </div>
                         ))}
@@ -86,6 +126,16 @@ const BusinessPage = () => {
                     ))}
                 </div>
             </div>
+            {selectedActivity && (
+                <BookingDialog
+                    open={dialogOpen}
+                    onClose={closeDialog}
+                    activity={selectedActivity}
+                    onSubmit={(bookingData) => handleBookingSubmit(bookingData, selectedActivity)}
+                    businessHours={workingHours}
+                />
+            )}
+
         </div>
     );
 
