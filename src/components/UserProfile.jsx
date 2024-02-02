@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axiosInstance from "../../axiosConfig.js";
 
 
 const UserProfile = () => {
     const { userId } = useParams();
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Wywołanie API do pobrania danych użytkownika przy użyciu axiosInstance
@@ -17,6 +18,13 @@ const UserProfile = () => {
                 console.error("There was an error!", error);
             });
     }, [userId]);
+
+    const handleLogout = () => {
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('role');
+        navigate('/');
+    }
 
     if (!user) {
         return <div>Loading...</div>;
@@ -32,6 +40,7 @@ const UserProfile = () => {
                     <p>Nazwisko: {user.lastName}</p>
                     <p>Email: {user.email}</p>
                     <p>Numer telefonu: {user.phoneNumber}</p>
+                    <button onClick={handleLogout}>Wyloguj</button>
                 </div>
             )}
         </div>

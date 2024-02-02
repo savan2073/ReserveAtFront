@@ -10,6 +10,13 @@ function Login() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const autoLogout = (miliseconds) => {
+        setTimeout(() => {
+            localStorage.clear();
+            navigate('/login');
+        }, miliseconds)
+    }
+
     async function login(event) {
         event.preventDefault();
         try {
@@ -29,6 +36,7 @@ function Login() {
                 localStorage.setItem("jwtToken", res.data.token);
                 localStorage.setItem("userId", res.data.userId);
                 localStorage.setItem("role", res.data.role);
+                autoLogout(30 * 60 * 1000);
                 navigate('/');
              } 
               else 

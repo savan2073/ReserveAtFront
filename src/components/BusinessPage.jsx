@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import "../styles/BusinessPage.css"
 import BookingDialog from "./BookingDialog.jsx";
@@ -12,6 +12,8 @@ const BusinessPage = () => {
 
     const [dialogOpen, setDialogOpen] = useState(false);
     const [selectedActivity, setSelectedActivity] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBusinessDetails = async () => {
@@ -60,6 +62,13 @@ const BusinessPage = () => {
     }
 
     const openDialog = (activity) => {
+        //sprawdzanie czy token JWT jest w localStorage
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+            //brak tokenu pokazuje komunikat i przekierowuje na stronę logowania
+            alert('Musisz się najpierw zalogować, aby umówić wizytę.');
+            navigate('/login');
+        }
         setSelectedActivity(activity);
         setDialogOpen(true);
     }
