@@ -1,70 +1,82 @@
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import axiosInstance from "../../axiosConfig.js";
-import BusinessEditDialog from "./BusinessEditDialog.jsx";
-
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../axiosConfig.js';
+import BusinessEditDialog from './BusinessEditDialog.jsx';
+import ActivityEditDialog from "./ActivityEditDialog.jsx";
 
 function BusinessDashboard() {
     const [businessDetails, setBusinessDetails] = useState(null);
-    const [employees, setEmployees] = useState([]);
     const [editDialogOpen, setEditDialogOpen] = useState(false);
     const navigate = useNavigate();
 
+    const [editActivityDialogOpen, setEditActivityDialogOpen] = useState(false);
+    const [currentActivity, setCurrentActivity] = useState(null);
+
     useEffect(() => {
+        // Zakładając, że /api/business/details zwraca szczegóły biznesu wraz z pracownikami i ich aktywnościami
         axiosInstance.get('/api/business/details')
             .then(res => {
                 setBusinessDetails(res.data);
-                const businessId = res.data.businessId;
-                console.log("Received business details: ", res.data);
-                axiosInstance.get(`/api/business/${businessId}/employees`)
-                    .then(res => setEmployees(res.data))
-                    .catch(error => console.error('Error fetching employees', error));
             })
-
-            .catch(error => {
-                console.error('Error fetching business data', error);
-            });
+            .catch(error => console.error('Error fetching business data', error));
     }, []);
 
+    const handleEditBusinessClick = () => setEditDialogOpen(true);
+
+    const handleEditActivityClick = (activity) => {
+        setCurrentActivity(activity);
+        setEditActivityDialogOpen(true);
+    };
 
 
-    const handleAddEmployeeClick = () => {
-        navigate('/add-employee');
+    const handleUpdateActivity = async (updatedActivity) => {
+        try {
+            // Wstawienie ID aktywności do URLa
+            const response = await axiosInstance.put(`/api/activities/${updatedActivity.id}`, updatedActivity);
+            console.log('Aktualizacja aktywności: ', response.data);
+
+            // Aktualizacja stanu, jeśli potrzebujesz odświeżyć listę aktywności po zmianach
+            // Może wymagać dodatkowego zapytania do API, aby odświeżyć dane, lub aktualizacji stanu lokalnego
+            setCurrentActivity(response.data);
+            setEditActivityDialogOpen(false); // Zamknięcie dialogu po pomyślnej aktualizacji
+            window.location.reload();
+        } catch (error) {
+            console.error('Błąd podczas aktualizacji aktywności:', error);
+            // Opcjonalnie: obsługa błędów, np. wyświetlenie komunikatu o błędzie
+        }
+    };
+
+    const handleDeleteActivity = async (activityId) => {
+        try {
+            await axiosInstance.delete(`/api/activities/${activityId}`);
+            console.log('Usunięto aktywność: ', activityId);
+
+            window.location.reload();
+        } catch (error) {
+            console.error('Błąd podczas usuwania aktywności: ', error);
+        }
     }
 
-    const handleManageWorkingHoursClick = () => {
-        // Przekierowanie do strony zarządzania godzinami pracy
-        navigate('/manage-working-hours');
-    }
+    const handleUpdateBusiness = async (updatedBusinessDetails) => {
+        try {
+            const response = await axiosInstance.put(`/api/business/${businessDetails.businessId}`, updatedBusinessDetails);
+            setBusinessDetails(response.data);
+            setEditDialogOpen(false);
+        } catch (error) {
+            console.error('Error updating business', error);
+        }
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem('businessId');
         localStorage.removeItem('role');
         navigate('/');
-    }
-
-    // Funkcja otwierająca dialog edycji
-    const handleEditClick = () => {
-        setEditDialogOpen(true);
-    };
-
-    // Funkcja aktualizująca dane biznesu
-    const handleUpdateBusiness = async (updatedBusinessDetails) => {
-        try {
-            const businessId = localStorage.getItem('businessId');
-            const response = await axiosInstance.put(`/api/business/${businessId}`, updatedBusinessDetails);
-            setBusinessDetails(response.data);
-            setEditDialogOpen(false); // Zamknij dialog po pomyślnej aktualizacji
-        } catch (error) {
-            console.error('Error updating business', error);
-        }
     };
 
     if (!businessDetails) {
         return <div>Loading...</div>;
     }
-
 
     return (
         <div>
@@ -72,32 +84,52 @@ function BusinessDashboard() {
             <div>
                 <h2>{businessDetails.businessName}</h2>
                 <p>City: {businessDetails.city}</p>
-                <p>Business Type: {businessDetails.businessType}</p>
                 <p>Address: {businessDetails.address}</p>
                 <p>Email: {businessDetails.email}</p>
-                {/* inny szczegóły biznesu */}
-                <button onClick={handleEditClick}>Edytuj</button>
+                <button onClick={handleEditBusinessClick}>Edytuj</button>
                 {editDialogOpen && (
                     <BusinessEditDialog
                         open={editDialogOpen}
-                        businessDetails={businessDetails}
                         onClose={() => setEditDialogOpen(false)}
+                        businessDetails={businessDetails}
                         onUpdateBusiness={handleUpdateBusiness}
                     />
                 )}
             </div>
-            <button onClick={handleManageWorkingHoursClick}>Zarządzaj godzinami pracy</button>
-            <button onClick={handleAddEmployeeClick}>Dodaj pracownika</button>
+            <button onClick={() => navigate('/manage-working-hours')}>Zarządzaj godzinami pracy</button>
+            <button onClick={() => navigate('/add-employee')}>Dodaj pracownika</button>
 
             <h2>Pracownicy</h2>
             <ul>
-                {employees.map(employee => (
+                {businessDetails.employees.map(employee => (
                     <li key={employee.employeeId}>
                         {employee.employeeName} {employee.employeeSurname}
-                        <button onClick={() => navigate(`/add-activity/${employee.employeeId}`)}>
-                            Dodaj Activity
-                        </button>
+                        <ul>
+                            {employee.activities.map(activity => (
+                                <div key={activity.id} className="service-card">
+                                    <div className="service-info">
+                                        <div className="service-title">{activity.activityName}</div>
+                                        <div className="service-time">{activity.durationOfTreatment} min</div>
+                                    </div>
+                                    <div className="service-booking">
+                                        <div className="service-price">{activity.price} zł</div>
+                                        <button onClick={() => handleEditActivityClick(activity)}>Edytuj</button>
+                                        <button onClick={() => handleDeleteActivity(activity.id)}>Usuń</button>
+                                    </div>
+                                </div>
+                            ))}
+                            {editActivityDialogOpen && (
+                                <ActivityEditDialog
+                                    open={editActivityDialogOpen}
+                                    onClose={() => setEditActivityDialogOpen(false)}
+                                    activity={currentActivity}
+                                    onUpdateActivity={handleUpdateActivity}
+                                />
+                            )}
+                        </ul>
+                        <button onClick={() => navigate(`/add-activity/${employee.employeeId}`)}>Dodaj Activity</button>
                     </li>
+
                 ))}
             </ul>
 
@@ -105,6 +137,5 @@ function BusinessDashboard() {
         </div>
     );
 }
-
 
 export default BusinessDashboard;
