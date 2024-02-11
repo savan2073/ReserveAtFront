@@ -128,6 +128,7 @@ function BusinessDashboard() {
                             )}
                         </ul>
                         <button onClick={() => navigate(`/add-activity/${employee.employeeId}`)}>Dodaj Activity</button>
+                        <button onClick={() => navigate(`/employee-bookings/${employee.employeeId}`)}>Zobacz rezerwacje</button>
                     </li>
 
                 ))}

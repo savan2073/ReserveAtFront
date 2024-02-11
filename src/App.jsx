@@ -13,6 +13,7 @@ import AddActivity from "./components/AddActivity.jsx";
 import SearchPage from "./components/SearchPage.jsx";
 import BusinessPage from "./components/BusinessPage.jsx";
 import ManageWorkingHours from "./components/ManageWorkingHours.jsx";
+import EmployeeBookings from "./components/EmployeeBookings.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/business-dashboard" element={<BusinessDashboard/>}/>
           <Route path="/add-employee" element={<AddEmployeeForm/>}/>
           <Route path="/add-activity/:employeeId" element={<AddActivity/>} />
+          <Route path="/employee-bookings/:employeeId" element={<EmployeeBookings/>}/>
           <Route path="/search" element={<SearchPage/>}/>
           <Route path="/business/:city/:businessName" element={<BusinessPage/>}/>
           <Route path="/manage-working-hours" element={<ManageWorkingHours />} />
