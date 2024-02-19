@@ -130,6 +130,17 @@ const BusinessPage = () => {
                 ))}
             </div>
             <div className="side-column">
+                <div className="send-message">
+                    {localStorage.getItem('jwtToken') && (
+                        <button
+                            className="send-message-button"
+                            onClick={() => navigate('/send-message', { state: { receiverBusinessId: businessDetails.businessId } })}
+
+                                >
+                            Wyślij Wiadomość
+                        </button>
+                    )}
+                </div>
                 <h3>Pracownicy</h3>
                 {/* Tutaj wypisz pracowników */}
                 {businessDetails.employees.map(employee => (

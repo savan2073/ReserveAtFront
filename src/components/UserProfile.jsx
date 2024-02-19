@@ -19,6 +19,10 @@ const UserProfile = () => {
             });
     }, [userId]);
 
+    const goToMessages = () => {
+        navigate(`/user-profile/${userId}/messages`);
+    };
+
     const handleLogout = () => {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem('userId');
@@ -40,6 +44,9 @@ const UserProfile = () => {
                     <p>Nazwisko: {user.lastName}</p>
                     <p>Email: {user.email}</p>
                     <p>Numer telefonu: {user.phoneNumber}</p>
+                    <button onClick={goToMessages}>Wiadomości</button>
+                    <br/>
+                    <br/>
                     <button onClick={handleLogout}>Wyloguj</button>
                 </div>
             )}

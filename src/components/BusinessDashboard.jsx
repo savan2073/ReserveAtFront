@@ -133,7 +133,7 @@ function BusinessDashboard() {
 
                 ))}
             </ul>
-
+            <button onClick={() => navigate('/business-messages')}>Zobacz Wiadomości</button>
             <button onClick={handleLogout}>Wyloguj biznes</button>
         </div>
     );

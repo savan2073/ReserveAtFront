@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css'; // Styl kalendarza
-import PropTypes from 'prop-types';
 import axiosInstance from "../../axiosConfig.js";
 
 const localizer = momentLocalizer(moment);
@@ -63,8 +62,6 @@ const EmployeeBookings = () => {
     );
 }
 
-EmployeeBookings.propTypes = {
-    employeeId: PropTypes.string.isRequired,
-};
+
 
 export default EmployeeBookings;
