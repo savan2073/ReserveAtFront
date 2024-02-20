@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import axiosInstance from "../../axiosConfig.js";
 import ReviewDialog from "./ReviewDialog.jsx";
+import AddFriendForm from "./AddFriendForm.jsx";
+import FriendsList from "./FriendsList.jsx";
 
 
 const UserProfile = () => {
@@ -101,6 +103,9 @@ const UserProfile = () => {
                     <br/>
                     <br/>
                     <button onClick={handleLogout}>Wyloguj</button>
+                    <br/><br/>
+                    <AddFriendForm />
+                    <FriendsList />
                 </div>
             )}
             <ReviewDialog
