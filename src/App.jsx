@@ -17,6 +17,7 @@ import EmployeeBookings from "./components/EmployeeBookings.jsx";
 import SendMessageForm from "./components/SendMessageForm.jsx";
 import BusinessMessages from "./components/BusinessMessages.jsx";
 import UserMessages from "./components/UserMessages.jsx";
+import FriendsReviews from "./components/FriendsReviews.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/business/:city/:businessName" element={<BusinessPage/>}/>
           <Route path="/manage-working-hours" element={<ManageWorkingHours />} />
           <Route path="/send-message" element={<SendMessageForm />}/>
+          <Route path="/user-profile/:userId/friends-reviews" element={<FriendsReviews/>}/>
         </Routes>
       </div>
     </BrowserRouter>

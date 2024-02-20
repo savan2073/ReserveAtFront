@@ -106,6 +106,7 @@ const UserProfile = () => {
                     <br/><br/>
                     <AddFriendForm />
                     <FriendsList />
+                    <button onClick={() => navigate(`/user-profile/${userId}/friends-reviews`)}>Recenzje znajomych</button>
                 </div>
             )}
             <ReviewDialog
