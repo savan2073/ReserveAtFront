@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axiosConfig.js';
 import BusinessEditDialog from './BusinessEditDialog.jsx';
 import ActivityEditDialog from "./ActivityEditDialog.jsx";
+import BusinessLocation from "./BusinessLocation.jsx";
 
 function BusinessDashboard() {
     const [businessDetails, setBusinessDetails] = useState(null);
@@ -11,6 +12,8 @@ function BusinessDashboard() {
 
     const [editActivityDialogOpen, setEditActivityDialogOpen] = useState(false);
     const [currentActivity, setCurrentActivity] = useState(null);
+
+    const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
 
     useEffect(() => {
         // Zakładając, że /api/business/details zwraca szczegóły biznesu wraz z pracownikami i ich aktywnościami
@@ -66,6 +69,20 @@ function BusinessDashboard() {
             console.error('Error updating business', error);
         }
     };
+    const saveLocation = async (location) => {
+        try {
+            await axiosInstance.put(`/api/business/${businessDetails.businessId}/location`, {
+                latitude: location.lat,
+                longitude: location.lng
+            });
+            alert('Location updated successfully');
+            // Optional: refresh business details to show updated location
+        } catch (error) {
+            console.error('Error updating location:', error);
+            alert('Failed to update location');
+        }
+    };
+
 
     const handleLogout = () => {
         localStorage.removeItem('jwtToken');
@@ -97,6 +114,7 @@ function BusinessDashboard() {
                 )}
             </div>
             <button onClick={() => navigate('/manage-working-hours')}>Zarządzaj godzinami pracy</button>
+            <button onClick={() => setIsLocationDialogOpen(true)}>Zaznacz lokalizację salonu na mapie</button>
             <button onClick={() => navigate('/add-employee')}>Dodaj pracownika</button>
 
             <h2>Pracownicy</h2>
@@ -135,6 +153,19 @@ function BusinessDashboard() {
             </ul>
             <button onClick={() => navigate('/business-messages')}>Zobacz Wiadomości</button>
             <button onClick={handleLogout}>Wyloguj biznes</button>
+            {isLocationDialogOpen && (
+                <BusinessLocation
+                    open={isLocationDialogOpen}
+                    onClose={() => setIsLocationDialogOpen(false)}
+                    onSave={(selectedLocation) => {
+                        console.log("Zapisana lokalizacja: ", selectedLocation);
+                        saveLocation(selectedLocation); // Tutaj przekazujesz lokalizację jako argument
+                        setIsLocationDialogOpen(false);
+                    }}
+                />
+            )}
+
+
         </div>
     );
 }

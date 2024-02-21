@@ -3,7 +3,12 @@ import {useEffect, useState} from "react";
 import "../styles/BusinessPage.css"
 import BookingDialog from "./BookingDialog.jsx";
 import axiosInstance from "../../axiosConfig.js";
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
+const containerStyle = {
+    width: '400px',
+    height: '200px'
+};
 
 const BusinessPage = () => {
     const {businessName, city} = useParams();
@@ -14,6 +19,11 @@ const BusinessPage = () => {
     const [selectedActivity, setSelectedActivity] = useState(null);
 
     const navigate = useNavigate();
+
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: "AIzaSyBWiRPMfvXXUEXXcYE4C-xCyYSLUKXy0DI" // Wstaw swój klucz API
+    })
 
     useEffect(() => {
         const fetchBusinessDetails = async () => {
@@ -103,6 +113,28 @@ const BusinessPage = () => {
         }
     }
 
+    const renderMap = () => {
+        return (
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={{ lat: businessDetails.latitude, lng: businessDetails.longitude }}
+                zoom={15}
+                options={{
+                    zoomControl: false,
+                    scrollwheel: false,
+                    disableDoubleClickZoom: true,
+                    draggable: false,
+                    streetViewControl: false,
+                    mapTypeControl: false,
+                    fullscreenControl: false
+                }}
+            >
+                <Marker position={{ lat: businessDetails.latitude, lng: businessDetails.longitude }} />
+            </GoogleMap>
+        );
+    };
+
+
     return (
         <div className="business-page-container">
             <div className="main-column">
@@ -140,6 +172,12 @@ const BusinessPage = () => {
                             Wyślij Wiadomość
                         </button>
                     )}
+                </div>
+                <h3>Lokalizacja:</h3>
+                <div className="map-container">
+                    {isLoaded && businessDetails.latitude && businessDetails.longitude && renderMap()}
+                    <p>Miasto: {businessDetails.city}</p>
+                    <p>Adres: {businessDetails.address}</p>
                 </div>
                 <h3>Pracownicy</h3>
                 {/* Tutaj wypisz pracowników */}
