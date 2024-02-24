@@ -21,7 +21,6 @@ const EmployeeBookingsCalendar = ({ bookings }) => {
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: '100%' }}
             />
         </div>
     );

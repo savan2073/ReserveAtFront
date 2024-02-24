@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import axiosInstance from "../../axiosConfig.js";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
+import "../styles/AddEmployeeForm.css";
 
 const AddEmployeeForm = () => {
     const [employeeName, setEmployeeName] = useState('');
@@ -25,26 +28,34 @@ const AddEmployeeForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Imię pracownika</label>
-                <input
-                    type="text"
-                    value={employeeName}
-                    onChange={(e) => setEmployeeName(e.target.value)}
-                />
+        <div>
+            <Header />
+            <div className="add-employee-form-container">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label className="form-label">Imię pracownika</label>
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={employeeName}
+                            onChange={(e) => setEmployeeName(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Nazwisko pracownika</label>
+                        <input
+                            className="form-input"
+                            type="text"
+                            value={employeeSurname}
+                            onChange={(e) => setEmployeeSurname(e.target.value)}
+                        />
+                    </div>
+                    {/* Dodaj inne pola formularza, jeśli są potrzebne */}
+                    <button className="submit-button" type="submit">Dodaj pracownika</button>
+                </form>
             </div>
-            <div>
-                <label>Nazwisko pracownika</label>
-                <input
-                    type="text"
-                    value={employeeSurname}
-                    onChange={(e) => setEmployeeSurname(e.target.value)}
-                />
-            </div>
-            {/* Dodaj inne pola formularza, jeśli są potrzebne */}
-            <button type="submit">Dodaj pracownika</button>
-        </form>
+            <Footer />
+        </div>
     );
 };
 

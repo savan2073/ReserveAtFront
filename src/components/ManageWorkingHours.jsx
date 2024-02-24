@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import axiosInstance from "../../axiosConfig.js";
-
+import "../styles/ManageWorkingHours.css";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 function ManageWorkingHours() {
     const businessId = localStorage.getItem('businessId');
     const [workingHours, setWorkingHours] = useState({
@@ -71,31 +73,37 @@ function ManageWorkingHours() {
 
     return (
         <div>
-            <h1>Zarządzaj godzinami pracy</h1>
+            <Header/>
+        <div className="manage-working-hours-container">
+            <h1 className="manage-working-hours-title">Zarządzaj godzinami pracy</h1>
             <form onSubmit={handleSubmit}>
                 {Object.entries(workingHours).map(([day, hours]) => (
-                    <div key={day}>
-                        <h3>{day.charAt(0).toUpperCase() + day.slice(1)}</h3>
-                        <label>
-                            Otwarcie:
-                            <input
-                                type="time"
-                                value={hours.open}
-                                onChange={(e) => handleInputChange(day, 'open', e.target.value)}
-                            />
-                        </label>
-                        <label>
-                            Zamknięcie:
-                            <input
-                                type="time"
-                                value={hours.close}
-                                onChange={(e) => handleInputChange(day, 'close', e.target.value)}
-                            />
-                        </label>
+                    <div key={day} className="day-container">
+                        <h3 className="day-title">{day.charAt(0).toUpperCase() + day.slice(1)}</h3>
+                        <div className="time-input-container">
+                            <label>
+                                Otwarcie:
+                                <input
+                                    type="time"
+                                    value={hours.open}
+                                    onChange={(e) => handleInputChange(day, 'open', e.target.value)}
+                                />
+                            </label>
+                            <label>
+                                Zamknięcie:
+                                <input
+                                    type="time"
+                                    value={hours.close}
+                                    onChange={(e) => handleInputChange(day, 'close', e.target.value)}
+                                />
+                            </label>
+                        </div>
                     </div>
                 ))}
-                <button type="submit">Zapisz godziny pracy</button>
+                <button type="submit" className="save-button">Zapisz godziny pracy</button>
             </form>
+        </div>
+            <Footer/>
         </div>
     );
 }
