@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 import BusinessSearchResult from "./BusinessSearchResult.jsx";
 import Pagination from "./Pagination.jsx";
+import BusinessMapDialog from "./BusinessMapDialog.jsx";
 
 
 const SearchPage = () => {
@@ -11,6 +12,7 @@ const SearchPage = () => {
     const [businesses, setBusinesses] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [businessesPerPage] = useState(10); // Możesz dostosować, ile biznesów na stronę
+    const [isMapDialogOpen, setIsMapDialogOpen] = useState(false);
 
     useEffect(() => {
         const fetchBusinesses = async () => {
@@ -37,6 +39,12 @@ const SearchPage = () => {
             {currentBusinesses.map(business => (
                 <BusinessSearchResult key={business.businessId} business={business} />
             ))}
+            <button onClick={() => setIsMapDialogOpen(true)}>Otwórz mapę</button>
+            <BusinessMapDialog
+                open={isMapDialogOpen}
+                onClose={() => setIsMapDialogOpen(false)}
+                businesses={businesses}
+            />
             <Pagination
                 businessesPerPage={businessesPerPage}
                 totalBusinesses={businesses.length}

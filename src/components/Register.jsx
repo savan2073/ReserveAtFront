@@ -40,11 +40,11 @@ function Register() {
     <div className="signup-container">
         <div className="signup-wrapper">
         <form className="signup-form">
-            <h2>Sign up</h2>
+            <h2>Zarejestruj się</h2>
             <input type="text"
                    className="form-control"
                    id="firstName"
-                   placeholder="Enter First Name"
+                   placeholder="Imię"
                    value={firstName}
                    onChange={(event) => {
                        setFirstName(event.target.value);
@@ -52,7 +52,7 @@ function Register() {
             <input type="text"
                 className="form-control"
                 id="lastName"
-                placeholder="Enter Last Name"
+                placeholder="Nazwisko"
                 value={lastName}
                 onChange={(event) => {
                     setLastName(event.target.value);
@@ -61,7 +61,7 @@ function Register() {
             <input type="email"
                    className="form-control"
                    id="email"
-                   placeholder="Enter Email"
+                   placeholder="Email"
                    value={email}
                    onChange={(event) => {
                        setEmail(event.target.value);
@@ -69,29 +69,24 @@ function Register() {
             <input type="password"
                    className="form-control"
                    id="password"
-                   placeholder="Enter Password"
+                   placeholder="Hasło"
                    value={password}
                    onChange={(event) => {
                        setPassword(event.target.value);
                    }} />
-            <input type="password" placeholder="Repeat your password" />
+            <input type="password" placeholder="Potwierdź hasło" />
             <input type="text"
                    className="form-control"
                    id="phoneNumber"
-                   placeholder="Enter Phone Number"
+                   placeholder="Numer telefonu"
                    value={phoneNumber}
                    onChange={(event) => {
                        setPhoneNumber(event.target.value);
                    }} />
-            <div className="terms">
-                <input type="checkbox" id="termsOfService" />
-                <label htmlFor="termsOfService">I agree all statements in Terms of service</label>
-            </div>
-            <button type="submit" className="RegisterButton" onClick={save}>Register</button>
-            <p className="member" onClick={handleLoginClick}>I am already member</p>
+            <button type="submit" className="RegisterButton" onClick={save}>Zarejestruj</button>
+            <p className="member" onClick={handleLoginClick}>Posiadam już konto</p>
         </form>
         <div className="signup-image">
-            {/* Here you would insert your desk image */}
             <img src={barber} alt="Workspace" />
         </div>
         </div>

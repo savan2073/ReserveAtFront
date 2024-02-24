@@ -1,0 +1,82 @@
+.dashboard-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.dashboard-title {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.business-info {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.business-info h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.business-info p {
+    margin: 5px 0;
+}
+
+.dashboard-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.dashboard-button:hover {
+    background-color: #0056b3;
+}
+
+.service-card {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.service-info,
+.service-booking {
+    padding: 10px;
+}
+
+.service-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.service-time,
+.service-price {
+    color: #666;
+}
+
+.employees-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.employees-list li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.employees-list button {
+    margin-top: 10px;
+}

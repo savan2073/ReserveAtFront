@@ -14,6 +14,7 @@ const BusinessPage = () => {
     const {businessName, city} = useParams();
     const [businessDetails, setBusinessDetails] = useState(null);
     const [workingHours, setWorkingHours] = useState([]);
+    const [reviews, setReviews] = useState([]);
 
     const [dialogOpen, setDialogOpen] = useState(false);
     const [selectedActivity, setSelectedActivity] = useState(null);
@@ -64,8 +65,25 @@ const BusinessPage = () => {
         if (city && businessName) {
             fetchBusinessDetails();
         }
+
     }, [city, businessName]);
 
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            if (businessDetails?.businessId) {
+                try {
+                    const response = await axiosInstance.get(`/api/reviews/business/${businessDetails.businessId}`);
+                    console.log("Recenzje to: " + response.data);
+                    setReviews(response.data);
+                } catch (error) {
+                    console.error('Error fetching reviews:', error);
+                }
+            }
+        };
+
+        fetchReviews();
+    }, [businessDetails?.businessId]);
 
     if (!businessDetails) {
         return <div>Ładowanie danych biznesu...</div>
@@ -134,6 +152,20 @@ const BusinessPage = () => {
         );
     };
 
+    const renderReviews = () => (
+        <div className="reviews-section">
+            <h2>Recenzje</h2>
+            {reviews.map(review => (
+                <div key={review.reviewId} className="review">
+                    <p>Użytkownik: {review.firstName} {review.lastName}</p>
+                    <p>Ocena: {review.rating}</p>
+                    <p>Treść: {review.content}</p>
+                    <p>Data: {new Date(review.reviewDate).toLocaleDateString()}</p>
+                </div>
+            ))}
+        </div>
+    );
+
 
     return (
         <div className="business-page-container">
@@ -160,6 +192,7 @@ const BusinessPage = () => {
                         ))}
                     </div>
                 ))}
+                {renderReviews()}
             </div>
             <div className="side-column">
                 <div className="send-message">

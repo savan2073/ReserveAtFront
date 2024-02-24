@@ -10,7 +10,7 @@
 .signup-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     background: #ffffff; /* Assuming you want a white background like the image */
     padding: 40px; /* This adds some spacing inside the wrapper */
     border-radius: 8px; /* This gives the wrapper rounded corners */
@@ -66,6 +66,9 @@
 .signup-image {
     /* Adjust width as necessary */
     flex: 1;
+    display: flex; /* Dodane, aby użyć właściwości flexbox do centrowania */
+    justify-content: center; /* Centrowanie w poziomie */
+    align-items: center;
 }
 
 .signup-image img {

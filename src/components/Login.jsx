@@ -67,16 +67,16 @@ function Login() {
 
                 {/* Formularz rejestracji */}
                 <div className="signup-form">
-                    <h2>Sign in</h2>
+                    <h2>Zaloguj się</h2>
                     <form>
                         {/* Pole wejściowe dla nazwy użytkownika/emaila */}
                         <div className="input-field">
-                            <label htmlFor="email">Your Name</label>
+                            <label htmlFor="email">Email użytkownika</label>
                             <input
                                 type="email"
                                 id="email"
                                 required
-                                placeholder="Enter Email"
+                                placeholder="Email"
                                 value={email}
                                 onChange={(event) => {
                                     setEmail(event.target.value);
@@ -86,12 +86,12 @@ function Login() {
 
                         {/* Pole wejściowe dla hasła */}
                         <div className="input-field">
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Hasło</label>
                             <input
                                 type="password"
                                 id="password"
                                 required
-                                placeholder="Enter Password"
+                                placeholder="Hasło"
                                 value={password}
                                 onChange={(event) => {
                                     setPassword(event.target.value);
@@ -100,20 +100,14 @@ function Login() {
                         </div>
 
                         {/* Przycisk logowania */}
-                        <button type="submit" onClick={login}>Log in</button>
+                        <button type="submit" onClick={login}>Zaloguj się</button>
                     </form>
 
-                    {/* Przyciski logowania społecznościowego */}
-                    <div className="social-login">
-                        <p>Or login with</p>
-                        <button className="facebook">Facebook</button>
-                        <button className="twitter">Twitter</button>
-                        <button className="google">Google</button>
-                    </div>
+
 
                     {/* Link do tworzenia konta */}
                     <div className="create-account">
-                        <a onClick={handleRegisterClick}>Create an account</a>
+                        <a onClick={handleRegisterClick}>Zarejestruj się</a>
                     </div>
                 </div>
             </div>

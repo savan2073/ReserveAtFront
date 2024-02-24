@@ -5,6 +5,7 @@ import bizregillu from "../assets/images/bizregillu.jpg"
 import {useNavigate} from "react-router-dom";
 
 
+
 function BizRegister() {
     const [companyName, setCompanyName] = useState("");
     const [city, setCity] = useState("BIAŁYSTOK");
@@ -132,7 +133,7 @@ function BizRegister() {
                               placeholder="Wpisz opis"
                               value={description}
                               onChange={(event) => setDescription(event.target.value)}>
-            </textarea>
+                    </textarea>
 
                     {/* File Upload for PhotoPath */}
                     <input type="file"
