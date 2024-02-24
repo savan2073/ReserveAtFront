@@ -4,11 +4,26 @@ import {
     Button,
     DialogActions,
     DialogContent,
-    DialogTitle,
+    DialogTitle, styled,
     TextField,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+
+const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(2),
+}));
+
+const StyledDialogActions = styled(DialogActions)(({ theme }) => ({
+    justifyContent: 'center',
+    padding: theme.spacing(3),
+}));
+
+const StyledButton = styled(Button)({
+    fontWeight: 'bold',
+});
 
 const BookingDialog = ({ open, onClose, activity, onSubmit, businessHours }) => {
     const [bookingDate, setBookingDate] = useState('');
@@ -57,7 +72,7 @@ const BookingDialog = ({ open, onClose, activity, onSubmit, businessHours }) => 
     return (
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>Rezerwacja usługi</DialogTitle>
-            <DialogContent>
+            <StyledDialogContent>
                 <TextField
                     label="Data"
                     type="date"
@@ -80,15 +95,15 @@ const BookingDialog = ({ open, onClose, activity, onSubmit, businessHours }) => 
                         step: 900, // 15 minut
                     }}
                 />
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={onClose} color="primary">
+            </StyledDialogContent>
+            <StyledDialogActions>
+                <StyledButton onClick={onClose} color="primary">
                     Anuluj
-                </Button>
+                </StyledButton>
                 <Button onClick={handleBooking} color="secondary">
                     Zarezerwuj
                 </Button>
-            </DialogActions>
+            </StyledDialogActions>
         </Dialog>
     );
 };

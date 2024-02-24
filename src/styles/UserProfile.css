@@ -1,0 +1,92 @@
+/* UserProfile.css */
+.profile-container {
+    margin-top: 270px;
+    padding: 0 20px;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-details {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.user-detail {
+    margin: 10px 0;
+}
+
+.user-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.user-action-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.user-action-button:hover {
+    background-color: #0056b3;
+}
+
+.bookings-list {
+    list-style: none;
+    padding: 0;
+}
+
+.booking-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.booking-detail {
+    margin: 5px 0;
+}
+
+.review-button {
+    /* Styl dla przycisku "Wystaw recenzję", podobny do .user-action-button */
+    background-color: #28a745;
+    color: white;
+    /* ...reszta stylów */
+}
+
+.review-button:hover {
+    background-color: #218838;
+}
+
+.logout-button {
+    /* Styl dla przycisku "Wyloguj" */
+    background-color: #dc3545;
+    color: white;
+    /* ...reszta stylów */
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+/* Dodaj media queries dla responsywności */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 0 10px;
+    }
+
+    .user-actions, .bookings-list {
+        text-align: left;
+    }
+}

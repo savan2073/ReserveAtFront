@@ -1,0 +1,35 @@
+.reviews-container {
+    margin-top: 300px;
+}
+
+.reviews-title {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.reviews-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px; /* Możesz dostosować szerokość */
+}
+
+.review-item {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.review-detail {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.no-reviews {
+    text-align: center;
+    color: #666;
+}

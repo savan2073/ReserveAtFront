@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from "../../axiosConfig"; // Upewnij się, że ścieżka jest prawidłowa dla Twojej konfiguracji axios
-
+import axiosInstance from "../../axiosConfig";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx"; // Upewnij się, że ścieżka jest prawidłowa dla Twojej konfiguracji axios
+import "../styles/BusinessMessages.css";
 const BusinessMessages = () => {
     const [messages, setMessages] = useState([]);
     const [activeReplyId, setActiveReplyId] = useState(null); // Stan dla ID aktywnej wiadomości do odpowiedzi
@@ -49,33 +51,38 @@ const BusinessMessages = () => {
 
     return (
         <div>
-            <h2>Wiadomości</h2>
-            {messages.length > 0 ? (
-                <ul>
-                    {messages.map((message) => (
-                        <li key={message.messageId}>
-                            <p>Message ID: {message.messageId}</p> {/* Dodane wyświetlanie messageId */}
-                            <p>Od: {message.senderUserId ? `Użytkownik ${message.senderUserId}` : `Biznes ${message.senderBusinessId}`}</p>
-                            <p>Treść: {message.messageContent}</p>
-                            <button onClick={() => setActiveReplyId(activeReplyId === message.messageId ? null : message.messageId)}>
-                                {activeReplyId === message.messageId ? 'Anuluj' : 'Odpowiedz'}
-                            </button>
-                            {activeReplyId === message.messageId && (
-                                <div>
-                                    <textarea
-                                        value={replyContent}
-                                        onChange={(e) => setReplyContent(e.target.value)}
-                                        placeholder="Wpisz swoją odpowiedź tutaj..."
-                                    />
-                                    <button onClick={() => sendReply(message.messageId)}>Wyślij Odpowiedź</button>
-                                </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>Brak wiadomości.</p>
-            )}
+            <Header/>
+            <div className="business-messages-container">
+                <h2>Wiadomości</h2>
+                {messages.length > 0 ? (
+                    <ul className="messages-list">
+                        {messages.map((message) => (
+                            <li key={message.messageId} className="message-item">
+                                <p className="message-detail">Message ID: {message.messageId}</p>
+                                <p className="message-detail">Od: {message.senderUserId ? `Użytkownik ${message.senderUserId}` : `Biznes ${message.senderBusinessId}`}</p>
+                                <p className="message-detail">Treść: {message.messageContent}</p>
+                                <button className="message-action" onClick={() => setActiveReplyId(activeReplyId === message.messageId ? null : message.messageId)}>
+                                    {activeReplyId === message.messageId ? 'Anuluj' : 'Odpowiedz'}
+                                </button>
+                                {activeReplyId === message.messageId && (
+                                    <div className="reply-container">
+                    <textarea
+                        className="reply-textarea"
+                        value={replyContent}
+                        onChange={(e) => setReplyContent(e.target.value)}
+                        placeholder="Wpisz swoją odpowiedź tutaj..."
+                    />
+                                        <button className="reply-button" onClick={() => sendReply(message.messageId)}>Wyślij Odpowiedź</button>
+                                    </div>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p className="no-messages">Brak wiadomości.</p>
+                )}
+            </div>
+            <Footer/>
         </div>
     );
 };

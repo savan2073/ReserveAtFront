@@ -1,0 +1,40 @@
+.sendMessageForm-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Wysokość na całą dostępną widoczną przestrzeń */
+}
+
+.sendMessageForm-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Maksymalna szerokość boxa */
+}
+
+.sendMessageForm-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px; /* Odstęp między polem tekstowym a przyciskiem */
+    height: 100px; /* Wysokość pola tekstowego */
+    resize: none; /* Wyłączenie możliwości zmiany rozmiaru pola tekstowego */
+}
+
+.sendMessageForm-button {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sendMessageForm-button:hover {
+    background-color: #0056b3;
+}

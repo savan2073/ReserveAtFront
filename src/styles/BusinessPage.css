@@ -1,59 +1,117 @@
-
-
+/* Styl dla głównego kontenera strony biznesu */
 .business-page-container {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
+    display: flex;
+    justify-content: center; /* Centruje kolumny na stronie */
+    margin-top: 270px;
+    padding: 0 20px; /* Dodaje padding po bokach dla lepszego wyglądu */
+    max-width: 1200px; /* Dostosuj maksymalną szerokość kontenera do swoich potrzeb */
+    margin-left: auto; /* Automatyczne marginesy dla wycentrowania kontenera */
+    margin-right: auto;
 }
 
+/* Kontenery dla głównej i bocznej kolumny */
+.main-column, .side-column {
+    background: #FFF; /* Białe tło dla kolumn */
+    margin: 10px; /* Odstępy między kolumnami */
+    padding: 20px; /* Wewnętrzny odstęp dla treści kolumn */
+    border-radius: 8px; /* Zaokrąglone rogi */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtelny cień dla głębi */
+}
+
+/* Styl dla głównej kolumny */
 .main-column {
-    flex-grow: 2;
+    flex: 3; /* Zajmuje 3 części szerokości kontenera */
 }
 
+/* Styl dla bocznej kolumny */
 .side-column {
-    flex-grow: 1;
+    flex: 1; /* Zajmuje 1 część szerokości kontenera */
+    max-width: 500px; /* Ogranicza maksymalną szerokość bocznej kolumny */
 }
 
-.employee-services {
-    margin-bottom: 20px;
+/* Styl dla kontenera mapy */
+.map-container {
+    position: relative; /* Pozycjonowanie dla mapy */
+    height: 300px; /* Wysokość kontenera mapy */
+    margin-bottom: 20px; /* Odstęp pod mapą */
 }
 
+/* Styl dla przycisku Wyślij Wiadomość */
+.send-message-button {
+    background: #007bff; /* Kolor tła przycisku */
+    color: white; /* Kolor tekstu przycisku */
+    padding: 10px 15px; /* Wewnętrzny odstęp przycisku */
+    border: none; /* Brak obramowania */
+    border-radius: 4px; /* Zaokrąglone rogi przycisku */
+    cursor: pointer; /* Kursor wskazujący na przycisk */
+}
+
+/* Dodatkowe style dla recenzji, godzin pracy itd. */
+.reviews-section, .employee-services, .business-hours {
+    /* Twoje istniejące style */
+}
 .service-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #e0e0e0; /* Dodaje subtelne obramowanie dla karty */
+    margin-bottom: 10px; /* Dodaje odstęp między kartami */
 }
 
 .service-info {
-    flex-grow: 1;
+    text-align: left;
 }
 
 .service-title {
     font-weight: bold;
+    margin-bottom: 5px; /* Odstęp między nazwą a czasem trwania usługi */
 }
 
 .service-time {
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    color: #757575;
 }
 
 .service-booking {
-    text-align: right;
+    display: flex;
+    align-items: center;
 }
 
 .service-price {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-right: 20px; /* Odstęp między ceną a przyciskiem */
 }
 
+
+/* Style dla przycisku rezerwacji */
 .service-button {
-    padding: 5px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+    width: 80px; /* Stała szerokość */
+    height: 30px;
+    padding: 8px 16px; /* Małe wymiary paddingu */
+    background-color: #40E0D0; /* Kolor turkusowy */
+    color: white; /* Biały tekst */
+    font-size: 0.75rem; /* Mniejszy rozmiar czcionki */
+    border: none; /* Brak obramowania */
+    border-radius: 4px; /* Lekko zaokrąglone rogi */
+    cursor: pointer; /* Kursor wskazujący, że jest to przycisk */
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2); /* Subtelny cień dla głębi */
+    text-transform: uppercase; /* Tekst wielkimi literami */
+    transition: background-color 0.3s ease; /* Animacja tła przy najechaniu */
 }
 
 .service-button:hover {
-    background-color: #0056b3;
+    background-color: #3CDBD3; /* Nieco jaśniejszy turkusowy kolor przy najechaniu */
+}
+
+/* Możesz potrzebować dodatkowych media queries dla responsywności */
+@media (max-width: 768px) {
+    .business-page-container {
+        flex-direction: column;
+    }
+
+    .main-column, .side-column {
+        flex: none;
+        max-width: none;
+    }
 }

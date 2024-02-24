@@ -18,6 +18,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    color: #cccccc;
     background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent */
     padding: 0.5rem;
     border-bottom-left-radius: 0.5rem; /* Rounded corner on the bottom-left */

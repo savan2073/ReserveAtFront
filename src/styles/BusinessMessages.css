@@ -1,0 +1,69 @@
+.business-messages-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 300px auto 0 auto; /* Dostosuj margines górny w zależności od wysokości Headera */
+}
+
+.messages-list {
+    list-style: none;
+    padding: 0;
+}
+
+.message-item {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.message-detail {
+    margin-bottom: 10px;
+}
+
+.message-action {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.message-action:hover {
+    background-color: #0056b3;
+}
+
+.reply-container {
+    margin-top: 10px;
+}
+
+.reply-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    height: 100px;
+    resize: none;
+}
+
+.reply-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reply-button:hover {
+    background-color: #218838;
+}
+
+.no-messages {
+    text-align: center;
+}

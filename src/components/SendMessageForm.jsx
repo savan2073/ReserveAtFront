@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import axiosInstance from "../../axiosConfig.js";
 import {useLocation} from "react-router-dom";
+import "../styles/SendMessageForm.css";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 
 const SendMessageForm = () => {
     const [messageContent, setMessageContent] = useState('');
@@ -35,14 +38,25 @@ const SendMessageForm = () => {
 
 
     return (
-        <form onSubmit={sendMessage}>
-      <textarea
-          value={messageContent}
-          onChange={(e) => setMessageContent(e.target.value)}
-          required
-      />
-            <button type="submit">Wyślij Wiadomość</button>
-        </form>
+        <div>
+        <div className="sendMessageForm-container">
+            <Header/>
+            <div className="sendMessageForm-box">
+                <form onSubmit={sendMessage}>
+          <textarea
+              className="sendMessageForm-textarea"
+              value={messageContent}
+              onChange={(e) => setMessageContent(e.target.value)}
+              required
+              placeholder="Wpisz swoją wiadomość tutaj..."
+          />
+                    <button type="submit" className="sendMessageForm-button">Wyślij Wiadomość</button>
+                </form>
+            </div>
+
+        </div>
+            <Footer/>
+        </div>
     );
 };
 

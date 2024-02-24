@@ -50,6 +50,12 @@ function Header() {
           <div className="header-categories">
             <button className="category-button">Fryzjer</button>
             <button className="category-button">Barber shop</button>
+            <button className="category-button">Salon kosmetyczny</button>
+            <button className="category-button">Paznokcie</button>
+            <button className="category-button">Brwi i rzęsy</button>
+            <button className="category-button">Masaż</button>
+            <button className="category-button">Zwierzaki</button>
+            <button className="category-button">Fizjoterapia</button>
             {/* ...dodaj resztę kategorii */}
           </div>
         </div>

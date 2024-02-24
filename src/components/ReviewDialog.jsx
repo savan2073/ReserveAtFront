@@ -16,7 +16,7 @@ const ReviewDialog = ({ open, onClose, onSubmit, bookingId, businessId }) => {
     };
 
     return (
-        <Dialog open={open} onClose={onClose}>
+        <Dialog open={open} onClose={onClose} sx={{ '& .MuiDialog-container': { alignItems: 'flex-start', marginTop: '4rem' } }}>
             <DialogTitle>Wystaw recenzję</DialogTitle>
             <DialogContent>
                 <TextField
@@ -25,6 +25,7 @@ const ReviewDialog = ({ open, onClose, onSubmit, bookingId, businessId }) => {
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
                     fullWidth
+                    sx={{ marginBottom: '1rem' }}
                 />
                 <TextField
                     label="Komentarz"

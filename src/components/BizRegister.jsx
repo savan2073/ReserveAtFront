@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import bizregillu from "../assets/images/bizregillu.jpg"
 import {useNavigate} from "react-router-dom";
+import "../styles/BizRegister.css";
 
 
 
@@ -91,6 +92,7 @@ function BizRegister() {
                             </option>
                         ))}
                     </select>
+                    <br/>
 
                     {/* City */}
                     <select className="form-control"
@@ -102,7 +104,7 @@ function BizRegister() {
                             </option>
                         ))}
                     </select>
-
+                    <br/>
                     {/* Address */}
                     <input type="text"
                            className="form-control"
@@ -134,7 +136,7 @@ function BizRegister() {
                               value={description}
                               onChange={(event) => setDescription(event.target.value)}>
                     </textarea>
-
+                    <br/>
                     {/* File Upload for PhotoPath */}
                     <input type="file"
                            className="form-control"
@@ -143,8 +145,8 @@ function BizRegister() {
                            onChange={handleFileChange} />
 
                     {/* Save Button */}
-                    <button type="submit" className="RegisterButton" onClick={save}>Zapisz</button>
-                    <p className="member" onClick={handleBizLoginClick}>I am already member</p>
+                    <button type="submit" className="RegisterButton" onClick={save}>Zarejestruj</button>
+                    <p className="member" onClick={handleBizLoginClick}>Posiadam już konto</p>
                 </form>
                 <div className="signup-image">
                     <img src={bizregillu} alt="business register illustration" />

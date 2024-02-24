@@ -4,6 +4,9 @@ import axiosInstance from "../../axiosConfig.js";
 import ReviewDialog from "./ReviewDialog.jsx";
 import AddFriendForm from "./AddFriendForm.jsx";
 import FriendsList from "./FriendsList.jsx";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
+import "../styles/UserProfile.css";
 
 
 const UserProfile = () => {
@@ -76,37 +79,41 @@ const UserProfile = () => {
 
     return (
         <div>
-            <h1>Profil Użytkownika</h1>
+            <Header/>
+        <div className="profile-container">
+            <h1 className="profile-header">Profil Użytkownika</h1>
             {user && (
-                <div>
-                    <p>ID: {user.userId}</p>
-                    <p>Imię: {user.firstName}</p>
-                    <p>Nazwisko: {user.lastName}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Numer telefonu: {user.phoneNumber}</p>
-                    <button onClick={goToMessages}>Wiadomości</button>
+                <div className="user-details">
+                    <p className="user-detail">Imię: {user.firstName}</p>
+                    <p className="user-detail">Nazwisko: {user.lastName}</p>
+                    <p className="user-detail">Email: {user.email}</p>
+                    <p className="user-detail">Numer telefonu: {user.phoneNumber}</p>
                     <br/>
                     <br/>
                     <h2>Twoje rezerwacje</h2>
-                    <ul>
+                    <ul className="bookings-list">
                         {bookings.map((booking) => (
-                            <li key={booking.bookingId}>
-                                <p>Salon: {booking.businessName} o id: {booking.businessId}</p>
-                                <p>Aktywność: {booking.activityName}</p>
-                                <p>Data: {booking.bookingDate}, Start: {booking.startTime}, Koniec: {booking.endTime}</p>
+                            <li key={booking.bookingId} className="booking-item">
+                                <p className="booking-detail">Salon: {booking.businessName}</p>
+                                <p className="booking-detail">Aktywność: {booking.activityName}</p>
+                                <p className="booking-detail">Data: {booking.bookingDate}, Start: {booking.startTime}, Koniec: {booking.endTime}</p>
                                 {new Date(booking.bookingDate + ' ' + booking.endTime) < new Date() && (
-                                    <button onClick={() => openReviewDialog(booking.bookingId, booking.businessId)}>Wystaw recenzję</button>
+                                    <button className="review-button" onClick={() => openReviewDialog(booking.bookingId, booking.businessId)}>Wystaw recenzję</button>
                                 )}
                             </li>
                         ))}
                     </ul>
                     <br/>
                     <br/>
-                    <button onClick={handleLogout}>Wyloguj</button>
+
                     <br/><br/>
                     <AddFriendForm />
                     <FriendsList />
-                    <button onClick={() => navigate(`/user-profile/${userId}/friends-reviews`)}>Recenzje znajomych</button>
+                    <button className="user-action-button" onClick={() => navigate(`/user-profile/${userId}/friends-reviews`)}>Recenzje znajomych</button>
+                    <div className="user-actions">
+                        <button className="user-action-button" onClick={goToMessages}>Wiadomości</button>
+                        <button className="user-action-button logout-button" onClick={handleLogout}>Wyloguj</button>
+                    </div>
                 </div>
             )}
             <ReviewDialog
@@ -116,6 +123,8 @@ const UserProfile = () => {
                 bookingId={selectedBookingId}
                 businessId={selectedBusinessId}
             />
+        </div>
+            <Footer/>
         </div>
     );
 

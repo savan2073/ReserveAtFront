@@ -1,5 +1,6 @@
 import axiosInstance from "../../axiosConfig.js";
 import {useState} from "react";
+import "../styles/AddFriendForm.css"
 
 const AddFriendForm = () => {
     const [firstName, setFirstName] = useState('');
@@ -21,13 +22,14 @@ const AddFriendForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="add-friend-form">
             <input
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder="Imię znajomego"
                 required
+                className="add-friend-input"
             />
             <input
                 type="text"
@@ -35,8 +37,9 @@ const AddFriendForm = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Nazwisko znajomego"
                 required
+                className="add-friend-input"
             />
-            <button type="submit">Dodaj znajomego</button>
+            <button type="submit" className="add-friend-submit">Dodaj znajomego</button>
         </form>
     );
 };

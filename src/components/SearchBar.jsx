@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "../styles/SearchBar.css"
 
 const SearchBar = () => {
     const [city, setCity] = useState('BIAŁYSTOK');
@@ -38,8 +39,9 @@ const SearchBar = () => {
     };
 
     return (
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} className="search-form">
             <select
+                className="search-select"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
             >
@@ -51,6 +53,7 @@ const SearchBar = () => {
             </select>
 
             <select
+                className="search-select"
                 value={businessType}
                 onChange={(e) => setBusinessType(e.target.value)}
             >
@@ -61,7 +64,7 @@ const SearchBar = () => {
                 ))}
             </select>
 
-            <button type="submit">Szukaj</button>
+            <button className="search-button" type="submit">Szukaj</button>
         </form>
     );
 };

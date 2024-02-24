@@ -7,11 +7,11 @@
 
 .header {
     width: 100%;
-    position: fixed;
+    position: absolute;
     top: 0;
     background-color: #FFF; /* Domyślny biały kolor tła */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lekki cień dla wyróżnienia */
-    z-index: 10;
+    z-index: 1000;
     transition: all 0.3s ease-in-out;
   }
   

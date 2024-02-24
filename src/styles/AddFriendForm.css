@@ -1,0 +1,27 @@
+.add-friend-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* lub inna szerokość, jeśli to konieczne */
+    margin: 20px auto; /* Wycentruje formularz na stronie */
+}
+
+.add-friend-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-friend-form button {
+    padding: 10px;
+    background-color: #4CAF50; /* zielony kolor tła */
+    color: white; /* biały kolor tekstu */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-friend-form button:hover {
+    background-color: #45a049; /* ciemniejszy odcień zielonego przy najechaniu */
+}

@@ -1,0 +1,85 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Pełna wysokość widocznej części strony */
+    padding-top: 70px; /* Dostosuj to do wysokości twojego Headera */
+    justify-content: flex-start; /* Rozpoczyna zawartość od góry */
+    align-items: center; /* Wyśrodkowanie w poziomie */
+    margin-top: 200px;
+    background: #f5f5f5; /* Tło dla całej strony */
+}
+
+.messages-container {
+    width: 100%;
+    max-width: 800px; /* Maksymalna szerokość kontenera */
+    margin-top: 50px; /* Odstęp od góry */
+    margin-bottom: 50px; /* Odstęp od dołu */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 8px;
+}
+
+.messages-list {
+    list-style: none;
+    padding: 0;
+}
+
+.message-item {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.message-sender, .message-content {
+    margin-bottom: 10px;
+}
+
+.message-action {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.message-action:hover {
+    background-color: #0056b3;
+}
+
+.reply-container {
+    margin-top: 10px;
+}
+
+.reply-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    height: 100px;
+    resize: none;
+}
+
+.reply-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reply-button:hover {
+    background-color: #218838;
+}
+
+.no-messages {
+    text-align: center;
+}

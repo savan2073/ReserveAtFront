@@ -1,0 +1,47 @@
+.footer {
+    background-color: #333;
+    color: #f2f2f2;
+    padding: 20px 0;
+    font-size: 14px;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 10%;
+}
+
+.footer-section {
+    margin: 10px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.facebook-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg>...tutaj SVG Facebooka...</svg>');
+}
+
+.twitter-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg>...tutaj SVG Twittera...</svg>');
+}
+
+.instagram-icon {
+    background-image: url('data:image/svg+xml;utf8,<svg>...tutaj SVG Instagrama...</svg>');
+}
+

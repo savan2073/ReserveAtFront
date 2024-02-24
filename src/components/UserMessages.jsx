@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from "../../axiosConfig"; // Załóż, że ścieżka jest prawidłowa
-
+import axiosInstance from "../../axiosConfig";
+import Footer from "./Footer.jsx";
+import Header from "./Header.jsx"; // Załóż, że ścieżka jest prawidłowa
+import "../styles/UserMessages.css"
 const UserMessages = () => {
     const [messages, setMessages] = useState([]);
     const [activeReplyId, setActiveReplyId] = useState(null); // Stan dla ID aktywnej wiadomości do odpowiedzi
@@ -49,33 +51,38 @@ const UserMessages = () => {
 
 
     return (
-        <div>
-            <h2>Wiadomości</h2>
-            {messages.length > 0 ? (
-                <ul>
-                    {messages.map((message) => (
-                        <li key={message.messageId}>
-                            <p>Od: {message.senderBusinessId ? `Biznes ${message.senderBusinessId}` : `Użytkownik ${message.senderUserId}`}</p>
-                            <p>Treść: {message.messageContent}</p>
-                            <button onClick={() => setActiveReplyId(activeReplyId === message.messageId ? null : message.messageId)}>
-                                {activeReplyId === message.messageId ? 'Anuluj' : 'Odpowiedz'}
-                            </button>
-                            {activeReplyId === message.messageId && (
-                                <div>
-                                    <textarea
-                                        value={replyContent}
-                                        onChange={(e) => setReplyContent(e.target.value)}
-                                        placeholder="Wpisz swoją odpowiedź tutaj..."
-                                    />
-                                    <button onClick={() => sendReply(message.messageId)}>Wyślij Odpowiedź</button>
-                                </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>Brak wiadomości.</p>
-            )}
+        <div className="page-container">
+            <Header/>
+            <div className="messages-container">
+                <h2>Wiadomości</h2>
+                {messages.length > 0 ? (
+                    <ul className="messages-list">
+                        {messages.map((message) => (
+                            <li key={message.messageId} className="message-item">
+                                <p className="message-sender">Od: {message.senderBusinessId ? `Biznes ${message.senderBusinessId}` : `Użytkownik ${message.senderUserId}`}</p>
+                                <p className="message-content">Treść: {message.messageContent}</p>
+                                <button className="message-action" onClick={() => setActiveReplyId(activeReplyId === message.messageId ? null : message.messageId)}>
+                                    {activeReplyId === message.messageId ? 'Anuluj' : 'Odpowiedz'}
+                                </button>
+                                {activeReplyId === message.messageId && (
+                                    <div className="reply-container">
+                    <textarea
+                        className="reply-textarea"
+                        value={replyContent}
+                        onChange={(e) => setReplyContent(e.target.value)}
+                        placeholder="Wpisz swoją odpowiedź tutaj..."
+                    />
+                                        <button className="reply-button" onClick={() => sendReply(message.messageId)}>Wyślij Odpowiedź</button>
+                                    </div>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p className="no-messages">Brak wiadomości.</p>
+                )}
+            </div>
+            <Footer/>
         </div>
     );
 };

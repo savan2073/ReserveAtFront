@@ -3,6 +3,9 @@ import {useSearchParams} from "react-router-dom";
 import BusinessSearchResult from "./BusinessSearchResult.jsx";
 import Pagination from "./Pagination.jsx";
 import BusinessMapDialog from "./BusinessMapDialog.jsx";
+import Header from "./Header.jsx";
+import "../styles/SearchPage.css";
+import Footer from "./Footer.jsx";
 
 
 const SearchPage = () => {
@@ -35,11 +38,15 @@ const SearchPage = () => {
 
     return (
         <div>
-            <h1>Wyniki wyszukiwania</h1>
-            {currentBusinesses.map(business => (
+            <Header/>
+            <div className="search-container">
+                <div className="search-results-header">
+                    <h1 className="search-title">Wyniki wyszukiwania</h1>
+                    <button onClick={() => setIsMapDialogOpen(true)} className="map-button">Otwórz mapę</button>
+                </div>
+                {currentBusinesses.map(business => (
                 <BusinessSearchResult key={business.businessId} business={business} />
             ))}
-            <button onClick={() => setIsMapDialogOpen(true)}>Otwórz mapę</button>
             <BusinessMapDialog
                 open={isMapDialogOpen}
                 onClose={() => setIsMapDialogOpen(false)}
@@ -50,6 +57,8 @@ const SearchPage = () => {
                 totalBusinesses={businesses.length}
                 paginate={paginate}
             />
+            </div>
+            <Footer/>
         </div>
     );
 };

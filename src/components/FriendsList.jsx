@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axiosInstance from "../../axiosConfig.js";
-
+import "../styles/FriendsList.css";
 const FriendsList = () => {
     const [friends, setFriends] = useState([]);
 
@@ -18,11 +18,13 @@ const FriendsList = () => {
     }, []);
 
     return (
-        <div>
-            <h2>Moji znajomi</h2>
-            <ul>
+        <div className="friends-container">
+            <h2 className="friends-title">Znajomi</h2>
+            <ul className="friends-list">
                 {friends.map(friend => (
-                    <li key={friend.userId}>{friend.firstName} {friend.lastName}</li>
+                    <li key={friend.userId} className="friend-item">
+                        <span className="friend-name">{friend.firstName} {friend.lastName}</span>
+                    </li>
                 ))}
             </ul>
         </div>

@@ -4,6 +4,7 @@ import "../styles/BusinessPage.css"
 import BookingDialog from "./BookingDialog.jsx";
 import axiosInstance from "../../axiosConfig.js";
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import Header from "./Header.jsx";
 
 const containerStyle = {
     width: '400px',
@@ -148,6 +149,7 @@ const BusinessPage = () => {
                 }}
             >
                 <Marker position={{ lat: businessDetails.latitude, lng: businessDetails.longitude }} />
+
             </GoogleMap>
         );
     };
@@ -168,11 +170,14 @@ const BusinessPage = () => {
 
 
     return (
-        <div className="business-page-container">
+        <div>
+            <Header/>
+        <div className="business-page-container" style={{marginTop: '270px'}}>
             <div className="main-column">
+                <h2>{businessDetails.businessName}</h2>
                 <img src={`/${businessDetails.photoPath}`} alt={businessDetails.businessName} className="business-image" />
                 <div className="business-rating">
-                    Rating: {businessDetails.rating} ({businessDetails.reviewCount} opinii)
+                    Ocena: {businessDetails.rating} ({businessDetails.reviewCount} opinii)
                 </div>
                 <h2>Usługi</h2>
                 {businessDetails.employees.map(employee => (
@@ -238,6 +243,7 @@ const BusinessPage = () => {
                 />
             )}
 
+        </div>
         </div>
     );
 
